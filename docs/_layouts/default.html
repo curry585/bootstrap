@@ -22,11 +22,12 @@
     <div class="container bs-docs-container">
 
       <div class="row">
-        <div class="col-md-9" role="main">
+        <div class="col-md-{% if page.fullwidth == true %}12{% else %}9{% endif %}" role="main">
           {{ content }}
         </div>
-        <div class="col-md-3">
-          <div class="bs-docs-sidebar hidden-print hidden-xs hidden-sm" role="complementary">
+        {% unless page.fullwidth == true %}
+        <div class="col-md-3" role="complementary">
+          <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm">
             <ul class="nav bs-docs-sidenav">
               {% if page.slug == "getting-started" %}
                 {% include nav/getting-started.html %}
@@ -52,8 +53,9 @@
               Preview theme
             </a>
             {% endif %}
-          </div>
+          </nav>
         </div>
+        {% endunless %}
       </div>
     </div>
 
